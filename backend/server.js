@@ -88,7 +88,7 @@ app.get('/menuid', (req, res) => {
 })
 
 
-app.get('/search', (req, res) => {
+app.get('/', (req, res) => {
     let searchedWhname = `('BANGALORE WAREHOUSE', 'HYDERABAD WAREHOUSE','VIJAYAWADA WAREHOUSE')`;
     let searchedStatus = `('AVAILABLE','DAMAGED','NOT AVAILABLE')`;
     let searchedExpBucket = `('30-60','60-90','<30')`;
