@@ -88,7 +88,8 @@ app.get('/menuid', (req, res) => {
 })
 
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
+    console.log(req.body);
     let searchedWhname = `('BANGALORE WAREHOUSE', 'HYDERABAD WAREHOUSE','VIJAYAWADA WAREHOUSE')`;
     let searchedStatus = `('AVAILABLE','DAMAGED','NOT AVAILABLE')`;
     let searchedExpBucket = `('30-60','60-90','<30')`;
@@ -101,10 +102,10 @@ app.get('/', (req, res) => {
     let dataSql = `
     SELECT * FROM inventorydata 
     WHERE 
-    Whname IN ${searchedWhname} AND
-    Whid IN ${searchedWhid} AND
-    Status IN ${searchedStatus} AND
-    EXPBucket IN ${searchedExpBucket} AND
+    Whname IN ${req.body.Whname} AND
+    Whid IN ${req.body.Whid} AND
+    Status IN ${req.body.Status} AND
+    EXPBucket IN ${req.body.ExpBucket} AND
     Productname IN ${searchedProductName} AND
     Categoryname IN ${searchedCategoryname} AND
     Menuid IN ${searchedMenuid} AND
@@ -122,10 +123,10 @@ app.get('/', (req, res) => {
         SELECT SUM(${inventoryCost}),SUM(${inventoryProfit}), SUM(${inventoryValue}),SUM(${QTY}) FROM  
         inventorydata
         WHERE
-        Whname IN ${searchedWhname} AND
-        Whid IN ${searchedWhid} AND
-        Status IN ${searchedStatus} AND
-        EXPBucket IN ${searchedExpBucket} AND
+        Whname IN ${req.body.Whname} AND
+        Whid IN ${req.body.Whid} AND
+        Status IN ${req.body.Status} AND
+        EXPBucket IN ${req.body.ExpBucket} AND
         Productname IN ${searchedProductName} AND
         Categoryname IN ${searchedCategoryname} AND
         Menuid IN ${searchedMenuid} AND
