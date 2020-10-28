@@ -1,12 +1,17 @@
 import React,{useContext,useEffect,useState} from 'react'
 import { ChartContext } from '../context/ChartContext';
-import Chart from './Chart'
+import Chart from './Chart';
+import Headers from "./Headers";
 import Axios from "axios";
 import { ToogleContext } from '../context/ToogleContext';
+import Body from './Body';
 function Charts() {
     const { chartData, dispatch } = useContext(ChartContext);
     const {toogle,setToogle} = useContext(ToogleContext);
     const [requestPayload,setRequestPayload] = useState({});
+    const [headers,setHeaders] = useState([]);
+    const [chartBody,setChartBody] = useState([]);
+    
     function preparePayloadData(){
         let payload = {};
         let payloadString;
@@ -38,7 +43,8 @@ function Charts() {
                 data: requestPayload
             })
                 .then((res) => {
-                    console.log(res.data.data);
+                    setHeaders(res.data.summedResult);
+                    setChartBody(res.data.data);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -48,11 +54,14 @@ function Charts() {
     }
     useEffect(() => {
         preparePayloadData();
-        fetchData();
     }, [toogle])
+    useEffect(()=>{
+        fetchData();
+    },[requestPayload])
     return (
         <div>
-            <Chart/>
+            <Headers headers={headers}/>
+            <Body bodyData = {chartBody}/>
         </div>
     )
 }

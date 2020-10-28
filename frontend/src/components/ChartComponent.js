@@ -21,7 +21,7 @@ function ChartComponent() {
     }, [toogle])
     return (
         <div>
-        {!readyToRenderChart?(<h1>h</h1>):<Charts/>}
+        {!readyToRenderChart?(<h1>h</h1>):(<Charts/>)}
         </div>
     )
 }
