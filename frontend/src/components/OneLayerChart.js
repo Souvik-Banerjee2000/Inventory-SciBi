@@ -45,13 +45,13 @@ function OneLayerChart({type,bodyData}) {
     // const { chartData, dispatch } = useContext(ChartContext)
     
     return (
-        <div>
+        <div className = "lukume">
             {oneLayerChart.length > 0 ? (
                 <Chart
                     chartType={type}
                     data={oneLayerChart}
                     options={oneLayerChartOption}
-                    width="100%"
+                    width="70%"
                     height="400px"
                 />
             ) : (<></>)}

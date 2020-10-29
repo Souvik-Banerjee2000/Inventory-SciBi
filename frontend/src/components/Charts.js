@@ -37,12 +37,15 @@ function Charts() {
         if (Object.keys(requestPayload).length === 0 && requestPayload.constructor === Object){
             console.log("empty");
         }else{
+            console.log(requestPayload);
             Axios({
                 method: 'post',
                 url: 'http://127.0.0.1:5000/',
                 data: requestPayload
             })
                 .then((res) => {
+                    console.log(res.data);
+
                     setHeaders(res.data.summedResult);
                     setChartBody(res.data.data);
                 })

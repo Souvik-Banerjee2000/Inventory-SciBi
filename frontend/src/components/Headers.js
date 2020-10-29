@@ -1,15 +1,21 @@
 import React,{useEffect} from 'react';
+const colors = ['#1A5073','#4BBCEC','#6EBE4A','#F5AC41'];
 
 function Headers({headers}) {
     return (
-        <div>
+        <div >
             {headers.length === 0?(<h1>Loading</h1>):(
-                <div>
+                <div className = " buttonContainer ">
                 {Object.keys(headers[0]).map((keyName,keyIndex)=>(
-                    <div key = {keyName}>
+                    <div style={{ backgroundColor: colors[keyIndex] }} className= "luku" key = {keyName}>
+                    <div className="upper-label">
                     {keyName}
-                    <br/>
-                    {headers[0][keyName]}
+                    </div>
+                    <hr/>
+                    <div className = "luku">
+                    <p>&#8377; {headers[0][keyName]}</p>
+                    
+                    </div>
                     </div>
                 ))}
                 </div>
