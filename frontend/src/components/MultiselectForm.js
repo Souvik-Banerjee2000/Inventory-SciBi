@@ -48,7 +48,8 @@ const MultiselectForm = ({endpoint,url}) => {
         applySelectionChanges();
     },[selected])
     return (
-        <div>
+        <div className="selection">
+        <h6>{endpoint}</h6>
             <MultiSelect
                 options={options}
                 value={selected}

@@ -90,13 +90,13 @@ app.get('/menuid', (req, res) => {
 
 app.post('/', (req, res) => {
     console.log(req.body);
-    let searchedWhname = `('BANGALORE WAREHOUSE', 'HYDERABAD WAREHOUSE','VIJAYAWADA WAREHOUSE')`;
-    let searchedStatus = `('AVAILABLE','DAMAGED','NOT AVAILABLE')`;
-    let searchedExpBucket = `('30-60','60-90','<30')`;
-    let searchedProductName = `('DANTKANTI PATANJANLI','PATANJALI FACEWASH','PONDS FACEWASH','SANTOOR','WHITE FACE POWDER','XIOMI REDMI NOTE4','XIOMI REDMI NOTE5','ZIOX')`;
-    let searchedCategoryname = `('BASIC PHONES','FACE WASH','SMART PHONE','SOAP','TALCUM POWDER','TOOTH PASTE')`;
-    let searchedWhid = `('WMFO','WMF1','WMF2')`;
-    let searchedMenuid = `('C1234','C1252','C1296','C1623','C2533','C7263','C8326','C9372')`;
+    // let req.body.Whname = `('BANGALORE WAREHOUSE', 'HYDERABAD WAREHOUSE','VIJAYAWADA WAREHOUSE')`;
+    // let req.body.Status = `('AVAILABLE','DAMAGED','NOT AVAILABLE')`;
+    // let req.body.ExpBucket = `('30-60','60-90','<30')`;
+    // let req.body.ProductName = `('DANTKANTI PATANJANLI','PATANJALI FACEWASH','PONDS FACEWASH','SANTOOR','WHITE FACE POWDER','XIOMI REDMI NOTE4','XIOMI REDMI NOTE5','ZIOX')`;
+    // let req.body.Categoryname = `('BASIC PHONES','FACE WASH','SMART PHONE','SOAP','TALCUM POWDER','TOOTH PASTE')`;
+    // let req.body.Whid = `('WMFO','WMF1','WMF2')`;
+    // let req.body.Menuid = `('C1234','C1252','C1296','C1623','C2533','C7263','C8326','C9372')`;
     let dateLowerRange = `2017-02-07`
     let higherDateRange = `2018-04-15`
     let dataSql = `
@@ -106,9 +106,9 @@ app.post('/', (req, res) => {
     Whid IN ${req.body.Whid} AND
     Status IN ${req.body.Status} AND
     EXPBucket IN ${req.body.ExpBucket} AND
-    Productname IN ${searchedProductName} AND
-    Categoryname IN ${searchedCategoryname} AND
-    Menuid IN ${searchedMenuid} AND
+    Productname IN ${req.body.Productname} AND
+    Categoryname IN ${req.body.Categoryname} AND
+    Menuid IN ${req.body.Menuid} AND
     Createdat BETWEEN '${dateLowerRange}' AND '${higherDateRange}'`;
     db.query(dataSql, (err, data) => {
         console.log(dataSql);
@@ -127,9 +127,9 @@ app.post('/', (req, res) => {
         Whid IN ${req.body.Whid} AND
         Status IN ${req.body.Status} AND
         EXPBucket IN ${req.body.ExpBucket} AND
-        Productname IN ${searchedProductName} AND
-        Categoryname IN ${searchedCategoryname} AND
-        Menuid IN ${searchedMenuid} AND
+        Productname IN ${req.body.Productname} AND
+        Categoryname IN ${req.body.Categoryname} AND
+        Menuid IN ${req.body.Menuid} AND
         Createdat BETWEEN '${dateLowerRange}' AND '${higherDateRange}'
         `;
         db.query(summedSql, (error, summedResult) => {

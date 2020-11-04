@@ -7,12 +7,12 @@ function Headers({headers}) {
             {headers.length === 0?(<h1>Loading</h1>):(
                 <div className = " buttonContainer ">
                 {Object.keys(headers[0]).map((keyName,keyIndex)=>(
-                    <div style={{ backgroundColor: colors[keyIndex] }} className= "luku" key = {keyName}>
+                    <div style={{ backgroundColor: colors[keyIndex] }} className= "headers" key = {keyName}>
                     <div className="upper-label">
                     {keyName}
                     </div>
                     <hr/>
-                    <div className = "luku">
+                    <div className = "headers">
                     <p>&#8377; {headers[0][keyName]}</p>
                     
                     </div>

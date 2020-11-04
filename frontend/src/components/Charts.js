@@ -15,6 +15,7 @@ function Charts() {
     function preparePayloadData(){
         let payload = {};
         let payloadString;
+        console.log("ChartData",chartData);
         for (let key in chartData) {
             payloadString = `(`;
             chartData[key].forEach((d, index) => {
@@ -37,7 +38,6 @@ function Charts() {
         if (Object.keys(requestPayload).length === 0 && requestPayload.constructor === Object){
             console.log("empty");
         }else{
-            console.log(requestPayload);
             Axios({
                 method: 'post',
                 url: 'http://127.0.0.1:5000/',

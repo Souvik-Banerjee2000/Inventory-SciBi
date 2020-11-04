@@ -7,7 +7,10 @@ const ChartContextProvider = (props)=>{
         Whname:[],
         Whid:[],
         Status:[],
-        ExpBucket:[]
+        ExpBucket:[],
+        Menuid:[],
+        Categoryname:[],
+        Productname:[]
     });
     return(
         <ChartContext.Provider value = {{chartData,dispatch}}>
