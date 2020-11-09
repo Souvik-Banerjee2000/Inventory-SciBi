@@ -16,9 +16,11 @@ const PivotChart = ({bodyData,idNameHeaders,productCategoryHeaders}) => {
         setProductCategoryData(pivotDataById(bodyData, data));
         setIdNameData(data);
     },[bodyData])
+
     return (
-        <div className="pivotChart">
-            <div className="ag-theme-alpine" style={{ height: 200, width: 500 }} >
+        <div className="pivotChart cont">
+            {/* <div class="first-table"> */}
+            <div className="ag-theme-alpine first-table " style={{ height: 310, width: 350 }} >
                 <AgGridReact
                     rowData={idNameData}>
                     {idNameHeaders.map(header=>(
@@ -26,7 +28,9 @@ const PivotChart = ({bodyData,idNameHeaders,productCategoryHeaders}) => {
                     ))}
                 </AgGridReact>
             </div>
-            <div className="ag-theme-alpine" style={{ height: 500, width: 1000 }} >
+            {/* </div> */}
+            {/* <div class="first-table"> */}
+            <div className="ag-theme-alpine second-table" style={{ height: 310, width: 550 }} >
                 <AgGridReact
                     rowData={productCategoryData}>
                     {productCategoryHeaders.map(header => (
@@ -34,6 +38,7 @@ const PivotChart = ({bodyData,idNameHeaders,productCategoryHeaders}) => {
                     ))}
                 </AgGridReact>
             </div>
+            {/* </div> */}
 
         </div>
     );

@@ -7,7 +7,9 @@ import ToogleContextProvider from './context/ToogleContext';
 
 function App() {
   return (
+    
     <div className="App">
+    <h1 className = "heading">INVENTORY DASHBOARD</h1>
     <ChartContextProvider>
     <ToogleContextProvider>
       <Forms/>
