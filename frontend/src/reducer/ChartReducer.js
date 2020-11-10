@@ -1,9 +1,9 @@
 export const ChartReducer = (state,action) =>{
     switch (action.type) {
         case action.type:
-            if(action.type==="ExpBucket")
-                console.log(action.value);
             state[`${action.type}`] = action.value;
+                if(action.type==="dates")
+                    console.log(state);
             return state;
         default:
             return state;

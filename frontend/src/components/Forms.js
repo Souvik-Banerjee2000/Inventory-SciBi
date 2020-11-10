@@ -1,7 +1,7 @@
 
 import React from 'react'
 import MultiselectForm from './MultiselectForm'
-
+import DateRangeSlider from "./DateRangeSlider"
 function Forms() {
     const url = "http://127.0.0.1:5000/";
     return (
@@ -13,6 +13,7 @@ function Forms() {
             <MultiselectForm endpoint="Menuid" url={url} />
             <MultiselectForm endpoint="Categoryname" url={url} />
             <MultiselectForm endpoint="Productname" url={url} />
+            <DateRangeSlider endpoint="dates" url={url}/>
         </div>
     )
 }

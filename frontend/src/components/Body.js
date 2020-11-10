@@ -7,7 +7,7 @@ function Body({bodyData}) {
     return (
         <div className="chartcontainer">
             <OneLayerChart type="PieChart" classname="donutChart" bodyData={bodyData}/>
-            <PivotChart bodyData={bodyData} idNameHeaders ={["Whid","Whname"]} productCategoryHeaders={["Menuid","Categoryid","Productname","PID"]}/>
+            <PivotChart bodyData={bodyData} tableHeaders={["Whid","Whname","Menuid","Categoryid","Productname","PID"]}/>
         </div>
     )
 }

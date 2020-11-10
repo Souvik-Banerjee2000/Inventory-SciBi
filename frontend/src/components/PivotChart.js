@@ -5,41 +5,25 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { distinctNameIdMapper,pivotDataById} from "../Calculations";
 
-const PivotChart = ({bodyData,idNameHeaders,productCategoryHeaders}) => {
-    const [idNameData,setIdNameData] = useState([]);
-    const [productCategoryData,setProductCategoryData] = useState([]);
+const PivotChart = ({bodyData,tableHeaders}) => {
+
+    const [tableData,setTableData] = useState([]);
     useEffect(()=>{
         // console.log(bodyData);
         let data = distinctNameIdMapper(bodyData);
-        // console.log(data);
-        // console.log(pivotDataById(bodyData,data));
-        setProductCategoryData(pivotDataById(bodyData, data));
-        setIdNameData(data);
+        setTableData(pivotDataById(bodyData, data));
     },[bodyData])
 
     return (
-        <div className="pivotChart cont">
-            {/* <div class="first-table"> */}
-            <div className="ag-theme-alpine first-table " style={{ height: 310, width: 350 }} >
+        <div className="pivotChart">
+            <div className="ag-theme-alpine second-table" style={{ height: 300, width: 980 }} >
                 <AgGridReact
-                    rowData={idNameData}>
-                    {idNameHeaders.map(header=>(
-                    <AgGridColumn field={header} key={header}/>
-                    ))}
-                </AgGridReact>
-            </div>
-            {/* </div> */}
-            {/* <div class="first-table"> */}
-            <div className="ag-theme-alpine second-table" style={{ height: 310, width: 550 }} >
-                <AgGridReact
-                    rowData={productCategoryData}>
-                    {productCategoryHeaders.map(header => (
+                    rowData={tableData}>
+                    {tableHeaders.map(header => (
                         <AgGridColumn field={header} key={header} />
                     ))}
                 </AgGridReact>
             </div>
-            {/* </div> */}
-
         </div>
     );
 };

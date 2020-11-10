@@ -86,7 +86,7 @@ function OneLayerChart({type,bodyData,classname}) {
     // const { chartData, dispatch } = useContext(ChartContext)
     
     return (
-        <div className="pie-chart-div chartcontainer">
+        <div className="donutDiv">
             {oneLayerChart.length > 0 ? (
                 <Chart className = "donutchart"
                     chartType={type}

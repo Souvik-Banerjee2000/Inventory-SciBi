@@ -44,6 +44,8 @@ function pivotDataById(bodyData,distinctIdData){
                 pivotData.Categoryid = bData.Categoryid;
                 pivotData.Productname = bData.Productname;
                 pivotData.PID = bData.PID;
+                pivotData.Whid = bData.Whid;
+                pivotData.Whname = bData.Whname
                 pivotDatas.push(pivotData)
             }
         })

@@ -8,7 +8,7 @@ function ChartComponent() {
     const [readyToRenderChart,setReadyToRenderChart] = useState(false);
     useEffect(() => {
         // console.log("ChartData Changed");
-        // console.log(chartData);
+        console.log(chartData);
         let isPlotable = true;
         for(let key in chartData){
             if(chartData[key].length===0){

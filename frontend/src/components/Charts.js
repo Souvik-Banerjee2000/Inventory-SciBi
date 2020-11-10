@@ -30,7 +30,8 @@ function Charts() {
             })
             payload[`${key}`] = payloadString;
         }
-
+        payload.dates = chartData.dates;
+        console.log(payload);
         setRequestPayload(payload);
         
     }
@@ -45,7 +46,6 @@ function Charts() {
             })
                 .then((res) => {
                     console.log(res.data);
-
                     setHeaders(res.data.summedResult);
                     setChartBody(res.data.data);
                 })

@@ -10,7 +10,9 @@ const ChartContextProvider = (props)=>{
         ExpBucket:[],
         Menuid:[],
         Categoryname:[],
-        Productname:[]
+        Productname:[],
+        dates:[]
+        
     });
     return(
         <ChartContext.Provider value = {{chartData,dispatch}}>

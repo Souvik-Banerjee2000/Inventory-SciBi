@@ -51,7 +51,7 @@ app.get('/expBucket', (req, res) => {
 })
 app.get('/dates',(req,res)=>{
     let sql = `
-    SELECT max(Createdat),min(Createdat) FROM inventorydata
+    SELECT max(Createdat) as maxdate,min(Createdat) as mindate FROM inventorydata
     `;
     db.query(sql,(error,result)=>{
         if (error) throw error;
@@ -97,8 +97,8 @@ app.post('/', (req, res) => {
     // let req.body.Categoryname = `('BASIC PHONES','FACE WASH','SMART PHONE','SOAP','TALCUM POWDER','TOOTH PASTE')`;
     // let req.body.Whid = `('WMFO','WMF1','WMF2')`;
     // let req.body.Menuid = `('C1234','C1252','C1296','C1623','C2533','C7263','C8326','C9372')`;
-    let dateLowerRange = `2017-02-07`
-    let higherDateRange = `2018-04-15`
+    // let dateLowerRange = `2017-02-07`
+    // let higherDateRange = `2018-04-15`
     let dataSql = `
     SELECT * FROM inventorydata 
     WHERE 
@@ -109,9 +109,9 @@ app.post('/', (req, res) => {
     Productname IN ${req.body.Productname} AND
     Categoryname IN ${req.body.Categoryname} AND
     Menuid IN ${req.body.Menuid} AND
-    Createdat BETWEEN '${dateLowerRange}' AND '${higherDateRange}'`;
+    Createdat BETWEEN '${req.body.dates[0]}' AND '${req.body.dates[1]}'`;
     db.query(dataSql, (err, data) => {
-        console.log(dataSql);
+        console.log(data.length);
         //Summed Parameters
         let inventoryCost = `\`Inventory Cost\``;
         let inventoryProfit = `\`Inventory Profit\``;
@@ -130,7 +130,7 @@ app.post('/', (req, res) => {
         Productname IN ${req.body.Productname} AND
         Categoryname IN ${req.body.Categoryname} AND
         Menuid IN ${req.body.Menuid} AND
-        Createdat BETWEEN '${dateLowerRange}' AND '${higherDateRange}'
+        Createdat BETWEEN '${req.body.dates[0]}' AND '${req.body.dates[1]}'
         `;
         db.query(summedSql, (error, summedResult) => {
             if (error) throw error
