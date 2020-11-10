@@ -13,6 +13,7 @@ function DateRangeSlider({endpoint,url}) {
     const [min,setMin] = useState(0);
     const [tweak,setTweak] = useState(false);
     const [payloadDates,setPayloadDates] = useState(["",""]);
+    const [marks,setMarks] = useState([]);
     function formatFetchedDateValues(val){
         return val.split("T")[0];
     }
@@ -85,11 +86,22 @@ function DateRangeSlider({endpoint,url}) {
         setPayloadDates([lowDateVal,highDateVal]);
         let lowNumericVal = convertDateToNumeric(lowDateVal, lowDateVal);
         let highNumericVal = convertDateToNumeric(highDateVal,lowDateVal); 
+        setMarks([
+            {
+                label: lowDateVal,
+                value: lowNumericVal
+            },
+            {
+                label: highDateVal,
+                value: highNumericVal
+            }
+        ])
         setLowestDateValue(lowDateVal);
         setHighestDateValue(highDateVal);
         setDateValue([lowNumericVal, highNumericVal]);
         setMin(lowNumericVal);
         setMax(highNumericVal);
+        
     }
     useEffect(()=>{
         fetchDates();
@@ -105,6 +117,7 @@ function DateRangeSlider({endpoint,url}) {
                 value = {dateValue}
                 onChange={handleChange}
                 onChangeCommitted={handleChangeCommitted}
+                marks={marks}
                 aria-labelledby="range-slider"
             />
         </div>
