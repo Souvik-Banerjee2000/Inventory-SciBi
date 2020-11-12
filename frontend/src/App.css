@@ -29,7 +29,7 @@
 }
 .formComponent{
   display:flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .headers{
   width : 300px;
@@ -47,13 +47,21 @@
   color: white;
   font-weight: bold;
 }
-
+.MuiSlider-markLabel{
+  left:5%;
+}
 .buttonContainer {
   
   display:flex;
   flex-flow: row wrap;
   justify-content: space-around;
   margin-top:1.5rem;
+}
+.selection{
+width:9rem;
+}
+.dropdown-content{
+width:20rem;
 }
 
 .App {

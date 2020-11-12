@@ -52,6 +52,8 @@ function DateRangeSlider({endpoint,url}) {
             newPayload.push(payloadDates[0]);
             newPayload.push(newDate);
         }
+        // console.log(Number(index));
+        // console.log(newPayload);
         setPayloadDates(newPayload);
         // console.log(newYear,newMonth,newDay);
         // let  
@@ -61,13 +63,18 @@ function DateRangeSlider({endpoint,url}) {
         // decodeDateVal(lowestDateValue,value);
         
         if(e.target.attributes[4]!==undefined){
-            decodeDateVal(val,e.target.attributes[4].value,lowestDateValue);
+            const dIndex = `data-index`;
+            // console.log("Called");
+            // console.log(e.target.attributes[dIndex].nodeValue);
+            decodeDateVal(val,e.target.attributes[dIndex].nodeValue,lowestDateValue);
             setDateValue(val);
         }
 
     }
     function handleChangeCommitted(e,val){
+        // console.log("committed");
         // setDateValue(val);
+        // console.log(payloadDates);
         dispatch({
             type:endpoint,
             value:payloadDates
@@ -89,11 +96,11 @@ function DateRangeSlider({endpoint,url}) {
         setMarks([
             {
                 label: lowDateVal,
-                value: lowNumericVal
+                value: lowNumericVal+17
             },
             {
                 label: highDateVal,
-                value: highNumericVal
+                value: highNumericVal-17
             }
         ])
         setLowestDateValue(lowDateVal);
@@ -109,8 +116,8 @@ function DateRangeSlider({endpoint,url}) {
     },[tweak])
     return (
         <div>
-            <h3>Createdat</h3>
-        <div style={{width:240,marginTop:20}}>
+            <p>Createdat</p>
+        <div style={{width:240,marginTop:5}}>
             <Slider
                 min = {min}
                 max= {max}
@@ -118,6 +125,7 @@ function DateRangeSlider({endpoint,url}) {
                 onChange={handleChange}
                 onChangeCommitted={handleChangeCommitted}
                 marks={marks}
+                color="secondary"
                 aria-labelledby="range-slider"
             />
         </div>
